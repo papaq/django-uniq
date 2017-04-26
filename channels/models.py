@@ -54,4 +54,4 @@ class Group(models.Model):
 
 class Subscriptions(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='subscriptions')
-    student = models.Integer(null=Falsw) # models.ForeignKey(User)
+    student = models.IntegerField (null=False) # models.ForeignKey(User)

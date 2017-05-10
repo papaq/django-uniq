@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def channels_list(request):
+    return render(request, "channels/channels_list.html")

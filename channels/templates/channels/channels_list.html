@@ -1,13 +1,14 @@
 {% extends 'channels/base.html' %}
 
+
 {% block content %}
 	{% for channel in channels %}
 		<div class="channel">
-			<h1><div class="title">{{ channel.title }}</div></h1>
-			<div class="date">
-				<p>published: {{ post.published_date }} | Comments: {{ post.approved_comments.count }}</p>
+			<div class="title">{{ channel.title }}</div>
+			<div class="years">
+				<p>{{ channel.group_stack.year_enter }} - {{ channel.group_stack.year_graduate }}</p>
 			</div>
-			<p>{{ post.text|linebreaksbr }}</p>
+			<p>{{ linebreaksbr }}</p>
 		</div>
 	{% endfor %}
 {% endblock %}

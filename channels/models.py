@@ -1,49 +1,40 @@
 from django.db import models
-from django.utils import timezone
 
-class Country(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
-
-class City(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='cities')
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
 
 class University(models.Model):
     title = models.CharField(max_length=200)
-    info = models.TextField(blank=True, null=True)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='universities')
+    country = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "universities"
 
     def __str__(self):
         return self.title
+
 
 class Faculty(models.Model):
     title = models.CharField(max_length=200)
-    university = models.ForeignKey(University, on_delete=models.CASCADE, related_name='faculties')
+    university = models.ForeignKey(University, on_delete=models.CASCADE, related_name="faculties")
 
     def __str__(self):
         return self.title
 
-class Department(models.Model):
-    title = models.CharField(max_length=200)
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name='departments')
+    class Meta:
+        verbose_name_plural = "faculties"
 
-    def __str__(self):
-        return self.title
 
 class GroupStack(models.Model):
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='group_stacks')
-    info =  models.TextField(blank=True, null=True)
+    title = models.CharField(max_length=20)
+
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name="groupstacks")
+    info = models.TextField(blank=True, null=True)
     year_enter = models.DateTimeField(null=False)
     year_graduate = models.DateTimeField(null=False)
 
     def __str__(self):
-        return self.department + ' group stack of ' + self.year_enter.year
+        return self.title
+
 
 class Group(models.Model):
     title = models.CharField(max_length=50)
@@ -51,7 +42,3 @@ class Group(models.Model):
 
     def __str__(self):
         return self.title
-
-class Subscriptions(models.Model):
-    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='subscriptions')
-    student = models.IntegerField (null=False) # models.ForeignKey(User)

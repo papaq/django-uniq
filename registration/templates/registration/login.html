@@ -1,0 +1,52 @@
+{% extends 'channels/base.html' %}
+{% block title %}Log In{% endblock %}
+{% block login_active %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Sign In</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'registration:login_user'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="id_email">
+                                E-mail:
+                            </label>
+                            <div class="col-sm-7">
+                                <input class='form-control' id="id_email" maxlength="30" name="email" type="text"
+                                value="{% if form.email.value %}{{ form.email.value }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="id_password">
+                                Password:
+                            </label>
+                            <div class="col-sm-7">
+                                <input class='form-control {% if form.password.errors %}has-error{% endif %}'
+                                       id="id_password" maxlength="30" name="password" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    New to uniq? <a href="{% url 'registration:register' %}">Create an account.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

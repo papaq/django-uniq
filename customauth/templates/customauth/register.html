@@ -1,6 +1,5 @@
 {% extends 'channels/base.html' %}
 {% block title %}Register{% endblock %}
-{% block register_active %}active{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
@@ -13,93 +12,108 @@
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
-                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" action=""
+                          method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <div class="form-group">
 
-                            <label class="control-label col-sm-3" for="id_first_name">
+                            <label class="control-label col-sm-4" for="id_first_name">
                                 First name:
                             </label>
-                            <div class="col-sm-7 {% if form.first_name.errors %}has-error{% endif %}">
+                            <div class="col-sm-6 {% if form.first_name.errors %}has-error{% endif %}">
                                 <input class='form-control' id="id_first_name" maxlength="30" name="first_name"
                                        type="text"
                                        value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}">
                             </div>
 
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <span class="text-danger small">{{ form.first_name.errors }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
 
-                            <label class="control-label col-sm-3" for="id_last_name">
+                            <label class="control-label col-sm-4" for="id_last_name">
                                 Last name:
                             </label>
-                            <div class="col-sm-7 {% if form.last_name.errors %}has-error{% endif %}">
+                            <div class="col-sm-6 {% if form.last_name.errors %}has-error{% endif %}">
                                 <input class='form-control' id="id_last_name" maxlength="30" name="last_name"
                                        type="text"
                                        value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}">
                             </div>
 
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <span class="text-danger small">{{ form.last_name.errors }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
 
-                            <label class="control-label col-sm-3" for="id_email">
+                            <label class="control-label col-sm-4" for="id_email">
                                 E-mail:
                             </label>
-                            <div class="col-sm-7 {% if form.email.errors %}has-error{% endif %}">
+                            <div class="col-sm-6 {% if form.email.errors %}has-error{% endif %}">
                                 <input class='form-control' id="id_email" maxlength="30" name="email"
                                        type="text"
                                        value="{% if form.email.value %}{{ form.email.value }}{% endif %}">
                             </div>
 
-                            <div class="col-sm-offset-3 col-sm-9">
+                            <div class="col-sm-offset-4 col-sm-8">
                                 <span class="text-danger small">{{ form.email.errors }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
 
-                            <label class="control-label col-sm-3" for="id_password">
+                            <label class="control-label col-sm-4" for="id_password1">
                                 Password:
                             </label>
-                            <div class="col-sm-7 {% if form.password.errors %}has-error{% endif %}">
-                                <input class='form-control' id="id_password" maxlength="30" name="password" type="password">
+                            <div class="col-sm-6 {% if form.password1.errors %}has-error{% endif %}">
+                                <input class='form-control' id="id_password1" maxlength="30" name="password1" type="password">
                             </div>
 
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <span class="text-danger small">{{ form.password.errors }}</span>
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <span class="text-danger small">{{ form.password1.errors }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="id_user_type">
+
+                            <label class="control-label col-sm-4" for="id_password2">
+                                Password confirmation:
+                            </label>
+                            <div class="col-sm-6 {% if form.password2.errors %}has-error{% endif %}">
+                                <input class='form-control' id="id_password2" maxlength="30" name="password2" type="password">
+                            </div>
+
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <span class="text-danger small">{{ form.password2.errors }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="id_user_kind">
                                 You are a:
                             </label>
-                            <div class="col-sm-7">
-                                <select class="form-control" id="id_user_type" name="user_type">
-                                    {% for x,y in form.fields.user_type.choices %}
-                                        <option value="{{ x }}"{% if form.fields.user_type.value == x %} selected{% endif %}>{{ y }}</option>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="id_user_kind" name="user_kind">
+                                    {% for x,y in form.fields.user_kind.choices %}
+                                        <option value="{{ x }}"{% if form.fields.user_kind.value == x %} selected{% endif %}>{{ y }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-10">
+                            <div class="col-sm-offset-4 col-sm-6">
                                 <button type="submit" class="btn btn-success">Sign up</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="panel-footer">
-                    Already have an account? <a href="{% url 'registration:login_user' %}">Click here</a> to log in.
+                    Already have an account? <a href="{% url 'customauth:login' %}">Click here</a> to log in.
                 </div>
             </div>
         </div>

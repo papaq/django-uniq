@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
 
     'channels.apps.ChannelsConfig',
     'post.apps.PostConfig',
-    'registration.apps.RegistrationConfig',
+    'customauth.apps.CustomauthConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    #'registration.Middleware.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'uniqproject.urls'
@@ -140,4 +140,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-LOGIN_URL = reverse_lazy('registration.views.register')
+LOGIN_URL = reverse_lazy('registration:login')
+LOGOUT_REDIRECT_URL = reverse_lazy('registration:login')
+
+# User model
+AUTH_USER_MODEL = 'customauth.UniqUser'

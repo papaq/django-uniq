@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+
 from channels import urls as channels_urls
+from customauth import urls as customauth_urls
 from post import urls as post_urls
-from registration import urls as registration_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^channels/', include(channels_urls)),
 
     url(r'^post/', include(post_urls)),
-    url(r'^register/', include(registration_urls)),
+    url(r'^account/', include(customauth_urls)),
 ]

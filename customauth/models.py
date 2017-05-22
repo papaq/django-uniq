@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser,
     PermissionsMixin)
+from random import randrange
 
 
 class MyUserManager(BaseUserManager):
@@ -16,6 +18,11 @@ class MyUserManager(BaseUserManager):
             **extra_fields
         )
 
+        user.first_name.title()
+        user.last_name.title()
+
+        if not user.media_dir:
+            user.media_dir = "user%s" % (randrange(11121111, 99989999))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -45,6 +52,14 @@ class MyUserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
+def upload_location(user, filename):
+    lst = filename.split(".")
+    extension = lst[-1]
+    avatar_name = "avatar%s" % (randrange(111211, 999899))
+
+    return "users/%s/%s.%s" % (user.media_dir, avatar_name, extension)
+
+
 class UniqUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name='email address',
@@ -55,18 +70,29 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50, blank=False)
     last_name = models.CharField(max_length=50, blank=False)
 
-    '''
-    USER_TYPES = (
+    USER_KINDS = (
         ('student', 'Student'),
         ('academic', 'Academic'),
         ('staff', 'Staff'),
     )
-    '''
 
-    user_kind = models.CharField(max_length=10, blank=True)
+    default_avatar = "img/avatar_default.png"
 
+    user_kind = models.CharField(max_length=10, choices=USER_KINDS, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True, auto_now=False)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+
+    avatar = models.ImageField(
+        upload_to=upload_location,
+        width_field="width_field",
+        height_field="height_field",
+        null=True,
+        blank=True,
+        default=default_avatar)
+
+    width_field = models.IntegerField(default=128, null=True, blank=True)
+    height_field = models.IntegerField(default=128, null=True, blank=True)
+
+    media_dir = models.CharField(max_length=50, null=False, blank=False)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -112,3 +138,5 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
         Simplest possible answer: All admins are staff
         """
         return self.is_admin
+
+

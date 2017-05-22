@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from random import randrange
 
 from .models import UniqUser
 
@@ -14,17 +15,10 @@ class UserCreationForm(forms.ModelForm):
     """
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
-    USER_TYPES = (
-        ('student', 'Student'),
-        ('academic', 'Academic'),
-        ('staff', 'Staff'),
-    )
-
-    user_kind = forms.ChoiceField(choices=USER_TYPES, required=True)
 
     class Meta:
         model = UniqUser
-        fields = ('email', 'first_name', 'last_name', 'avatar')
+        fields = ('email', 'first_name', 'last_name', 'user_kind', 'avatar')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -38,7 +32,12 @@ class UserCreationForm(forms.ModelForm):
         # Save the provided password in hashed format
         user = super(UserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
-        user.user_kind = self.cleaned_data['user_kind']
+
+        user.first_name = user.first_name.title()
+        user.last_name = user.last_name.title()
+
+        if not user.media_dir:
+            user.media_dir = "user%s" % (randrange(11121111, 99989999))
 
         if commit:
             user.save()
@@ -54,13 +53,27 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = UniqUser
-        fields = ('email', 'password', 'first_name', 'last_name', 'is_active', 'is_admin')
+        fields = ('email', 'password', 'first_name', 'last_name', 'user_kind', 'avatar',)
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+    def save(self, commit=True):
+        user = super(UserChangeForm, self).save(commit=False)
+        # user.set_password(self.cleaned_data["password"])
+
+        user.first_name = user.first_name.title()
+        user.last_name = user.last_name.title()
+
+        if not user.media_dir:
+            user.media_dir = "user%s" % (randrange(11121111, 99989999))
+
+        if commit:
+            user.save()
+        return user
 
 
 class UserAdmin(BaseUserAdmin):
@@ -76,6 +89,7 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('is_admin', 'user_kind')
     fieldsets = (
         (None, {'fields': ('email', 'password',)}),
+        ('Avatar', {'fields': ('avatar', 'width_field', 'height_field',)}),
         ('Personal info', {'fields': ('first_name', 'last_name',)}),
         ('Status', {'fields': ('user_kind',)}),
         ('Permissions', {'fields': ('is_admin',)}),

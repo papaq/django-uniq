@@ -24,7 +24,7 @@ from post import urls as post_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^channels/', include(channels_urls)),
+    url(r'^', include(channels_urls)),
 
     url(r'^post/', include(post_urls)),
     url(r'^account/', include(customauth_urls)),

@@ -9,6 +9,9 @@ from customauth.forms import UserLoginForm, UserProfileForm
 
 
 def login_user(request):
+    if request.user.is_authenticated():
+        return redirect(reverse("channels:index"))
+
     form = UserLoginForm(request.POST or None)
 
     if form.is_valid():
@@ -33,12 +36,16 @@ def login_user(request):
     return render(request, 'customauth/login.html', context)
 
 
+@login_required
 def logout_user(request):
     logout(request)
     return redirect(reverse('customauth:login'))
 
 
 def register_user(request):
+    if request.user.is_authenticated():
+        return redirect(reverse("channels:index"))
+
     form = UserCreationForm(request.POST or None)
 
     if form.is_valid():

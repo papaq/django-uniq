@@ -14,66 +14,89 @@
 
                 <div class="panel-body">
 
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <div class="col-sm-4">
-                            {% load static %}
-                            <img class="img-responsive" src="
-                                {% if user.avatar %}
-                                    {{ user.avatar.url }}
-                                {% else %}
-                                    {% get_media_prefix %}img/noavatar.png
-                                {% endif %}
-                            " alt="...">
-                        </div>
-                        <div class="col-sm-6">
-                            <br>
-                            <h4 class="media-heading">My avatar</h4><br>
-                            <p>
-                                <a href="#" class="btn btn-default" role="button">Change</a>
-                                <a href="#" class="btn btn-default" role="button">Remove</a>
-                            </p>
-                            <br>
-                        </div>
-                    </div>
+
 
                     <form class="form-horizontal" role="form" action=""
                           method="post" enctype="multipart/form-data">
                         {% csrf_token %}
+
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <div class="col-sm-4">
+                                {% load static %}
+                                <img class="img-responsive" src="
+                                    {% if user.avatar %}
+                                        {{ user.avatar.url }}
+                                    {% else %}
+                                        {% get_media_prefix %}img/noavatar.png
+                                    {% endif %}
+                                " alt="...">
+                            </div>
+                            <div class="col-sm-6">
+                                <br>
+                                <h4 class="media-heading">My avatar</h4><br>
+                                <p>
+                                    <a href="{% url 'customauth:avatar_delete' user.pk %}" class="btn btn-default" role="button">Delete</a>
+                                    &nbsp
+                                    <label class="btn btn-primary">
+                                        Upload&hellip; <input id="{{ form.avatar.auto_id }}"
+                                                              name="{{ form.avatar.name }}"
+                                                              type="file" style="display: none;">
+                                    </label>
+                                </p>
+                                <br>
+                            </div>
+                        </div>
+
+
+
+
 
                         <div class="form-group">
 
                             <label class="control-label col-sm-3" for="id_email">
                                 E-mail:
                             </label>
-                            <div class="col-sm-7 {% if form.email.errors %}has-error{% endif %}">
+                            <div class="col-sm-7">
                                 <input class='form-control' id="id_email" maxlength="30" name="email"
-                                       type="text" placeholder="E-mail"
-                                       value="{% if form.email.value %}{{ form.email.value }}{% endif %}">
-                            </div>
-
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <span class="text-danger small">{{ form.email.errors }}</span>
+                                       type="text" placeholder="E-mail" disabled=""
+                                       value="{{ user.email }}">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        {% for field in form %}
+                            {% if field.auto_id != 'id_avatar' %}
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for="{{ field.auto_id }}">
+                                        {{ field.label_tag }}
+                                    </label>
+                                    <div class="col-sm-7 {% if field.errors %}has-error{% endif %}">
+                                        <input class='form-control' id="{{ field.auto_id }}" maxlength="30"
+                                               type="text" placeholder="{{ field.label }}" name="{{ field.name }}"
+                                               value="{% if field.name == 'first_name' %}{{ user.first_name }}{% else %}{{ user.last_name }}{% endif %}">
+                                    </div>
 
-                            <label class="control-label col-sm-3" for="id_password">
-                                Password:
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                        <span class="text-danger small">{{ field.errors }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="id_user_kind">
+                                You are a:
                             </label>
-                            <div class="col-sm-7 {% if form.password.errors %}has-error{% endif %}">
-                                <input class='form-control' id="id_password" maxlength="30"
-                                       name="password" type="password" placeholder="Password">
-                            </div>
-
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <span class="text-danger small">{{ form.password.errors }}</span>
+                            <div class="col-sm-7">
+                                <input class='form-control' id="id_user_kind" maxlength="30" name="user_kind"
+                                       type="text" disabled=""
+                                       value="{{ user_kind }}">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-success">Sign in</button>
+                                <button type="submit" class="btn btn-success">Save changes</button>
+                                <a href="{% url 'customauth:profile'%}" class="btn btn-default" role="button">Cancel</a>
                             </div>
                         </div>
                     </form>

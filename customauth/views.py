@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, reverse
 
 from channels.models import Group
-from customauth.admin import UserCreationForm
-from customauth.forms import UserLoginForm
+from customauth.admin import UserCreationForm, UserChangeForm
+from customauth.forms import UserLoginForm, UserProfileForm
 
 
 def login_user(request):
@@ -39,7 +39,6 @@ def logout_user(request):
 
 
 def register_user(request):
-    # form = UserRegisterForm(request.POST or None)
     form = UserCreationForm(request.POST or None)
 
     if form.is_valid():
@@ -49,7 +48,6 @@ def register_user(request):
         email = form.cleaned_data['email']
         password = form.cleaned_data["password1"]
 
-        # user = super(UserCreationForm, form).save(commit=False)
         user.set_password(password)
         user.user_kind = form.cleaned_data['user_kind']
 
@@ -78,17 +76,45 @@ def register_user(request):
 
 @login_required
 def profile(request):
-    form = UserCreationForm(request.POST or None, request.FILES or None)
+    form = UserProfileForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
-        pass
+
+        new_first_name = form.clean_first_name()
+        new_last_name = form.clean_last_name()
+        new_avatar = form.cleaned_data['avatar']
+        if (request.user.first_name != new_first_name
+            or request.user.last_name != new_last_name
+                or new_avatar is not None):
+
+            request.user.first_name = new_first_name
+            request.user.last_name = new_last_name
+            if new_avatar is not None:
+                request.user.avatar = new_avatar
+
+            request.user.save()
+            return redirect(reverse('customauth:profile'))
+
+    user_kinds = {
+        'T': 'Student',
+        'C': 'Academic',
+        'F': 'Staff',
+    }
 
     context = {
         'form': form,
+        'user_kind': user_kinds[request.user.user_kind],
     }
-    return render(request, 'customauth/profile.html', context)
 
     return render(request, 'customauth/profile.html', context)
+
+
+@login_required
+def avatar_delete(request, pk):
+    if pk == request.user.pk.__str__():
+        request.user.avatar.delete(save=True)
+        print(request.user.avatar)
+    return redirect(reverse("customauth:profile"))
 
 
 def get_student_channel(user):

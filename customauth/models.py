@@ -18,8 +18,8 @@ class MyUserManager(BaseUserManager):
             **extra_fields
         )
 
-        user.first_name.title()
-        user.last_name.title()
+        user.first_name = user.first_name.title()
+        user.last_name = user.last_name.title()
 
         if not user.media_dir:
             user.media_dir = "user%s" % (randrange(11121111, 99989999))
@@ -71,14 +71,12 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50, blank=False)
 
     USER_KINDS = (
-        ('student', 'Student'),
-        ('academic', 'Academic'),
-        ('staff', 'Staff'),
+        ('T', 'Student'),
+        ('C', 'Academic'),
+        ('F', 'Staff'),
     )
 
-    default_avatar = "img/avatar_default.png"
-
-    user_kind = models.CharField(max_length=10, choices=USER_KINDS, blank=True)
+    user_kind = models.CharField(max_length=1, choices=USER_KINDS, default=USER_KINDS[0][0], blank=False)
     date_joined = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     avatar = models.ImageField(
@@ -86,8 +84,7 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
         width_field="width_field",
         height_field="height_field",
         null=True,
-        blank=True,
-        default=default_avatar)
+        blank=True,)
 
     width_field = models.IntegerField(default=128, null=True, blank=True)
     height_field = models.IntegerField(default=128, null=True, blank=True)

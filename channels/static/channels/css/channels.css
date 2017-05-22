@@ -11,3 +11,7 @@ body {
     background-color: white;
     color: blue;
 }
+
+.btn .btn-default {
+    margin: 10px;
+}

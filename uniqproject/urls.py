@@ -21,6 +21,7 @@ from django.contrib import admin
 from channels import urls as channels_urls
 from customauth import urls as customauth_urls
 from post import urls as post_urls
+from uniqproject import views as base_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,6 +29,9 @@ urlpatterns = [
 
     url(r'^post/', include(post_urls)),
     url(r'^account/', include(customauth_urls)),
+    url(r'^ajax_search/',include('ajax_search.urls')),
+
+    url(r'^.+$', base_views.redirect_back)
 ]
 
 if settings.DEBUG:

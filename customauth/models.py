@@ -1,9 +1,10 @@
-from django.conf import settings
-from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser,
     PermissionsMixin)
+from django.db import models
 from random import randrange
+
+from channels.models import Group, Faculty, University
 
 
 class MyUserManager(BaseUserManager):
@@ -76,7 +77,12 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
         ('F', 'Staff'),
     )
 
-    user_kind = models.CharField(max_length=1, choices=USER_KINDS, default=USER_KINDS[0][0], blank=False)
+    user_kind = models.CharField(
+        max_length=1,
+        choices=USER_KINDS,
+        default=USER_KINDS[0][0],
+        blank=False)
+
     date_joined = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     avatar = models.ImageField(
@@ -90,6 +96,24 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
     height_field = models.IntegerField(default=128, null=True, blank=True)
 
     media_dir = models.CharField(max_length=50, null=False, blank=False)
+
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.CASCADE,
+        related_name='subscribers',
+        null=True, blank=True)
+
+    faculty = models.ForeignKey(
+        Faculty,
+        on_delete=models.CASCADE,
+        related_name='subscribers',
+        null=True, blank=True)
+
+    university = models.ForeignKey(
+        University,
+        on_delete=models.CASCADE,
+        related_name='subscribers',
+        null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -135,5 +159,3 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
         Simplest possible answer: All admins are staff
         """
         return self.is_admin
-
-

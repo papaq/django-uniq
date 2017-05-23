@@ -1,13 +1,10 @@
 from django.db import models
 
-from customauth.models import UniqUser
-
 
 class University(models.Model):
     title = models.CharField(max_length=200)
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    users = models.ForeignKey(UniqUser, on_delete=models.CASCADE, related_name='university_subscribers')
 
     class Meta:
         verbose_name_plural = "universities"
@@ -19,7 +16,6 @@ class University(models.Model):
 class Faculty(models.Model):
     title = models.CharField(max_length=200)
     university = models.ForeignKey(University, on_delete=models.CASCADE, related_name="faculties")
-    users = models.ForeignKey(UniqUser, on_delete=models.CASCADE, related_name='faculty_subscribers')
 
     def __str__(self):
         return self.title
@@ -43,7 +39,6 @@ class GroupStack(models.Model):
 class Group(models.Model):
     title = models.CharField(max_length=50)
     group_stack = models.ForeignKey(GroupStack, on_delete=models.CASCADE, related_name='groups')
-    users = models.ForeignKey(UniqUser, on_delete=models.CASCADE, related_name='group_subscribers')
 
     def __str__(self):
         return self.title

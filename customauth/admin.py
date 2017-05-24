@@ -92,6 +92,7 @@ class UserAdmin(BaseUserAdmin):
         ('Avatar', {'fields': ('avatar', 'width_field', 'height_field',)}),
         ('Personal info', {'fields': ('first_name', 'last_name',)}),
         ('Status', {'fields': ('user_kind',)}),
+        ('Subscriptions', {'fields': ('university', 'faculty', 'group',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin

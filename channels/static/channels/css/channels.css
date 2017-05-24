@@ -1,15 +1,10 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    padding-top: 85px;
+    padding-top: 80px;
 }
 
 #id_logo {
     font-family: 'Fredoka One', cursive;
-}
-
-.badge {
-    background-color: white;
-    color: blue;
 }
 
 .btn .btn-default {

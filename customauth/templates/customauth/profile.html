@@ -4,6 +4,22 @@
 {% block content %}
 <div class="container">
 
+    {% for message in success %}
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Congratulations!</h4>
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
+    {% for message in warning %}
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Attention!</h4>
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
     <div class="row">
         <div class="col-sm-offset-0 col-sm-12 col-lg-offset-2 col-lg-8">
 
@@ -14,11 +30,9 @@
 
                 <div class="panel-body">
 
-
-
                     <form class="form-horizontal" role="form" action=""
                           method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
+                            {% csrf_token %}
 
                         <div class="col-sm-offset-2 col-sm-8">
                             <div class="col-sm-4">
@@ -36,27 +50,22 @@
                                 <h4 class="media-heading">My avatar</h4><br>
                                 <p>
                                     <a href="{% url 'customauth:avatar_delete' user.pk %}" class="btn btn-default" role="button">Delete</a>
-                                    &nbsp
+
                                     <label class="btn btn-primary">
                                         Upload&hellip; <input id="{{ form.avatar.auto_id }}"
                                                               name="{{ form.avatar.name }}"
                                                               type="file" style="display: none;">
                                     </label>
                                 </p>
-                                <br>
+                                <br><br>
                             </div>
                         </div>
 
-
-
-
-
                         <div class="form-group">
-
                             <label class="control-label col-sm-3" for="id_email">
                                 E-mail:
                             </label>
-                            <div class="col-sm-7">
+                            <div class="col-sm-5">
                                 <input class='form-control' id="id_email" maxlength="30" name="email"
                                        type="text" placeholder="E-mail" disabled=""
                                        value="{{ user.email }}">
@@ -69,13 +78,13 @@
                                     <label class="control-label col-sm-3" for="{{ field.auto_id }}">
                                         {{ field.label_tag }}
                                     </label>
-                                    <div class="col-sm-7 {% if field.errors %}has-error{% endif %}">
+                                    <div class="col-sm-5 {% if field.errors %}has-error{% endif %}">
                                         <input class='form-control' id="{{ field.auto_id }}" maxlength="30"
                                                type="text" placeholder="{{ field.label }}" name="{{ field.name }}"
                                                value="{% if field.name == 'first_name' %}{{ user.first_name }}{% else %}{{ user.last_name }}{% endif %}">
                                     </div>
 
-                                    <div class="col-sm-offset-4 col-sm-8">
+                                    <div class="col-sm-offset-4 col-sm-5">
                                         <span class="text-danger small">{{ field.errors }}</span>
                                     </div>
                                 </div>
@@ -86,10 +95,10 @@
                             <label class="control-label col-sm-3" for="id_user_kind">
                                 You are a:
                             </label>
-                            <div class="col-sm-7">
+                            <div class="col-sm-5">
                                 <input class='form-control' id="id_user_kind" maxlength="30" name="user_kind"
                                        type="text" disabled=""
-                                       value="{{ user_kind }}">
+                                       value="{{ user_info.user_kind }}">
                             </div>
                         </div>
 
@@ -108,7 +117,43 @@
                     <h3 class="panel-title">Subscription</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+
+                    <h4 class="col-lg-offset-1">You are subscribed to:</h4><br>
+
+                    <div class="">
+                        <form class="form-horizontal" role="form" action=""
+                              method="" enctype="multipart/form-data">
+
+                            {% for channel in user_info.channels %}
+                                {% if not channel.name == 'group' and not user_info.user_kind is 'Student' %}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="id_{{ channel.name }}">
+                                            {{ channel.name.title }}:
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input class='form-control' id="id_{{ channel.name }}"
+                                                   maxlength="30" name="{{ channel.name }}" type="text"
+                                                   placeholder="{{ channel.name.title }} is not specified yet" disabled=""
+                                                   value="{% if channel.content %}{{ channel.content.title }}{% endif %}">
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <a href="{% url 'customauth:unsubscription' channel.name %}"
+                                               class="btn btn-danger" role="button">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="{% url 'customauth:subscription' channel.name %}"
+                                               class="btn btn-success" role="button">
+                                                Change
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </form>
+                    </div>
                 </div>
             </div>
 

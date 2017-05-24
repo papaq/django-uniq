@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from random import randrange
 
 
 class UserLoginForm(forms.Form):
@@ -22,3 +21,17 @@ class UserProfileForm(forms.ModelForm):
         last_name = self.cleaned_data.get('last_name').title()
         return last_name
 
+
+class UserSubscriptionForm(forms.Form):
+    search_request = forms.CharField(max_length=255, required=True)
+
+
+class UserChooseForm(forms.Form):
+    choice = forms.CharField(max_length=1, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(UserChooseForm, self).__init__(*args, **kwargs)
+        choice = kwargs.get('choice')
+        print(choice)
+        self.base_fields.__setattr__('choice', choice)
+        print(self.base_fields.get('choice'))

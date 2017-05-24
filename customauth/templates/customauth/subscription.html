@@ -1,0 +1,87 @@
+{% extends 'channels/base.html' %}
+{% block title %}
+    Subscribe
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+    {% if errors %}
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Attention!</h4>
+      <p>{{ errors.sender }}</p>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-sm-offset-0 col-sm-12 col-lg-offset-2 col-lg-8">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Subscription</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <form class="form-horizontal" role="form" action=""
+                          method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <label class="control-label col-sm-2" for="id_{{ channel }}">
+                                {{ channel.title }}:
+                            </label>
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="{{ form_search.search_request.name }}"
+                                           id="id_{{ channel }}" placeholder="Search for {{ channel }}"
+                                    value="{% if form_search.request.value %}{{ form_search.request.value }}{% endif %}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">Search!</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+
+                    <form class="form-horizontal" role="form" action=""
+                          method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if form_search.search_request.value %}
+                            <br>
+                            <div class="form-horizontal">
+                                <label for="select" class="col-lg-2 control-label">Now choose:</label>
+                                <div class="col-lg-9">
+                                    <select class="form-control" id="select">
+                                        {% for x,y in form_choose.fields.channel.choices %}
+                                            <option value="{{ x }}"{% if form_choose.fields.choice.value == x %} selected{% endif %}>{{ y }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                        {% endif %}
+
+                        <br>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-9">
+                                {% if form_search.search_request.value and form_choose.fields.channel.choices %}
+                                    <a href="{% url 'customauth:profile'%}" class="btn btn-success" type="submit">Save changes</a>
+                                {% endif %}
+                                <a href="{% url 'customauth:profile'%}" class="btn btn-default" role="button">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

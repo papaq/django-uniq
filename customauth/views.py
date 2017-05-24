@@ -1,11 +1,10 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, reverse
 
-from channels.models import Group
-from customauth.admin import UserCreationForm, UserChangeForm
-from customauth.forms import UserLoginForm, UserProfileForm
+from channels.views import university_search_helper
+from customauth.admin import UserCreationForm
+from customauth.forms import UserLoginForm, UserProfileForm, UserSubscriptionForm, UserChooseForm
 
 
 def login_user(request):
@@ -92,7 +91,7 @@ def profile(request):
         new_avatar = form.cleaned_data['avatar']
         if (request.user.first_name != new_first_name
             or request.user.last_name != new_last_name
-                or new_avatar is not None):
+            or new_avatar is not None):
 
             request.user.first_name = new_first_name
             request.user.last_name = new_last_name
@@ -108,9 +107,49 @@ def profile(request):
         'F': 'Staff',
     }
 
+    university = request.user.university
+    faculty = request.user.faculty
+    group = request.user.group
+    user_kind = user_kinds[request.user.user_kind]
+
+    if user_kind is 'Student':
+        place = 'group'
+    else:
+        place = 'department'
+
+    warning = []
+    if not university:
+        warning += ['%s%s%s' % ('In order to receive and post news, subscribe to your ', place, ' please!')]
+
+    success = []
+
     context = {
         'form': form,
-        'user_kind': user_kinds[request.user.user_kind],
+
+        'user_info': {
+            'user_kind': user_kind,
+            'activity_place': place,
+
+            'channels': [
+                {
+                    'name': 'university',
+                    'content': university,
+                },
+
+                {
+                    'name': 'faculty',
+                    'content': faculty,
+                },
+
+                {
+                    'name': 'group',
+                    'content': group,
+                },
+            ]
+        },
+
+        'warning': warning,
+        'success': success,
     }
 
     return render(request, 'customauth/profile.html', context)
@@ -124,48 +163,152 @@ def avatar_delete(request, pk):
     return redirect(reverse("customauth:profile"))
 
 
-def get_student_channel(user):
-    user = user
-    user_kind = user.user_kind
+@login_required
+def unsubscription(request, channel):
+    if channel == 'university':
+        return redirect(reverse('customauth:unsubscribe_university', args=[request.user.pk]))
+
+    if channel == 'faculty':
+        return redirect(reverse('customauth:unsubscribe_faculty', args=[request.user.pk]))
+
+    if channel == 'group':
+        return redirect(reverse('customauth:unsubscribe_group', args=[request.user.pk]))
+
+    return redirect(reverse('customauth:profile'))
+
+
+@login_required
+def unsubscribe_university(request, pk):
+    if pk == request.user.pk.__str__():
+
+        request.user.university = None
+        request.user.faculty = None
+        request.user.group = None
+        request.user.save()
+    return redirect(reverse("customauth:profile"))
+
+
+@login_required
+def unsubscribe_faculty(request, pk):
+    if pk == request.user.pk.__str__():
+        request.user.faculty = None
+        request.user.group = None
+        request.user.save()
+    return redirect(reverse("customauth:profile"))
+
+
+@login_required
+def unsubscribe_group(request, pk):
+    if pk == request.user.pk.__str__():
+        request.user.group = None
+        request.user.save()
+    return redirect(reverse("customauth:profile"))
+
+
+@login_required
+def subscription(request, channel):
+    if channel == 'university':
+        return redirect(reverse('customauth:subscribe_university'))
+
+    if channel == 'faculty':
+        return redirect(reverse('customauth:subscribe_faculty'))
+
+    if channel == 'group':
+        return redirect(reverse('customauth:subscribe_group'))
+
+    return redirect(reverse('customauth:profile'))
+
+
+@login_required
+def subscribe_university(request):
+    form_search = UserSubscriptionForm(request.POST or None)
+    form_choose = UserChooseForm(request.POST or None)
+
+    results = []
+
+    if form_search.is_valid():
+        search_request = form_search.cleaned_data['search_request']
+        results = university_search_helper(4, search_request)
+        choice = {'choice': (('a', 'a'),)}
+        form_choose.__init__(kwargs=choice)
+        print(results)
+
+    warning = []
+
     context = {
-        'university': None,
-        'faculty': None,
-        'group': None,
+        'form_search': form_search,
+        'form_choose': form_choose,
+        'channel': 'university',
+        'attention': warning,
+        'results': results,
     }
 
-    if user_kind == 'student':
-        context = get_student_channel(user)
-    else:
-        if user_kind == 'academic':
-            context = get_academic_channel(user)
-        else:
-            if user_kind == 'staff':
-                context = get_staff_channel(user)
+    return render(request, 'customauth/subscription.html', context)
+
+
+@login_required
+def subscribe_faculty(request):
+    if request.user.university is None:
+        return redirect(reverse('customauth:subscribe_university'))
+
+    form_search = UserSubscriptionForm(request.POST or None)
+    form_choose = UserChooseForm(request.POST or None)
+
+    results = []
+
+    if form_search.is_valid():
+        search_request = form_search.cleaned_data['search_request']
+        results = university_search_helper(4, search_request)
+        print(results)
+
+        if request.user.university is None:
+            return redirect(reverse('customauth:subscribe_university'))
+
+        # save changes
+
+    warning = []
 
     context = {
-        'university': None,
-        'faculty': None,
-        'group': None,
+        'form_search': form_search,
+        'form_choose': form_choose,
+        'channel': 'faculty',
+        'attention': warning,
+        'results': results,
     }
 
-    return context
+    return render(request, 'customauth/subscription.html', context)
 
 
-def get_academic_channel(user):
+@login_required
+def subscribe_group(request):
+    if request.user.user_kind is not 'T':
+        return redirect(reverse('customauth:profile'))
+    if request.user.faculty is None:
+        return redirect(reverse('customauth:subscribe_faculty'))
+
+    form_search = UserSubscriptionForm(request.POST or None)
+    form_choose = UserChooseForm(request.POST or None)
+
+    results = []
+
+    if form_search.is_valid():
+        search_request = form_search.cleaned_data['search_request']
+        results = university_search_helper(4, search_request)
+        print(results)
+
+        if request.user.faculty is None:
+            return redirect(reverse('customauth:subscribe_faculty'))
+
+        # save changes
+
+    warning = []
+
     context = {
-        'university': None,
-        'faculty': None,
-        'group': None,
+        'form_search': form_search,
+        'form_choose': form_choose,
+        'channel': 'group',
+        'attention': warning,
+        'results': results,
     }
 
-    return context
-
-
-def get_staff_channel(user):
-    context = {
-        'university': None,
-        'faculty': None,
-        'group': None,
-    }
-
-    return context
+    return render(request, 'customauth/subscription.html', context)

@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdd7b563-a645-43ea-9310-07cdae893d57" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/customauth/templates/customauth/subscription.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ajax_search/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ajax_search/forms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ajax_search/urls.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ajax_search/views.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Leonardo.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Leonardo.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/static/channels/css/channels.css" afterPath="$PROJECT_DIR$/channels/static/channels/css/channels.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/templates/channels/base.html" afterPath="$PROJECT_DIR$/channels/templates/channels/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/views.py" afterPath="$PROJECT_DIR$/channels/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/admin.py" afterPath="$PROJECT_DIR$/customauth/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/forms.py" afterPath="$PROJECT_DIR$/customauth/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/templates/customauth/profile.html" afterPath="$PROJECT_DIR$/customauth/templates/customauth/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/urls.py" afterPath="$PROJECT_DIR$/customauth/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/views.py" afterPath="$PROJECT_DIR$/customauth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/settings.py" afterPath="$PROJECT_DIR$/uniqproject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/urls.py" afterPath="$PROJECT_DIR$/uniqproject/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/customauth/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="232" column="42" lean-forward="false" selection-start-line="232" selection-start-column="42" selection-end-line="232" selection-end-column="42" />
+            <state relative-caret-position="233">
+              <caret line="228" column="30" lean-forward="false" selection-start-line="228" selection-start-column="30" selection-end-line="228" selection-end-column="30" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -72,8 +58,8 @@
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="145" column="84" lean-forward="false" selection-start-line="145" selection-start-column="84" selection-end-line="145" selection-end-column="84" />
+            <state relative-caret-position="17">
+              <caret line="126" column="67" lean-forward="false" selection-start-line="126" selection-start-column="67" selection-end-line="126" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -89,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customauth/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="335">
-              <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -105,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/customauth/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+              <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -200,9 +186,9 @@
         <option value="$PROJECT_DIR$/channels/views.py" />
         <option value="$PROJECT_DIR$/customauth/templates/customauth/subscription.html" />
         <option value="$PROJECT_DIR$/customauth/admin.py" />
-        <option value="$PROJECT_DIR$/customauth/templates/customauth/profile.html" />
         <option value="$PROJECT_DIR$/customauth/urls.py" />
         <option value="$PROJECT_DIR$/customauth/forms.py" />
+        <option value="$PROJECT_DIR$/customauth/templates/customauth/profile.html" />
         <option value="$PROJECT_DIR$/customauth/views.py" />
       </list>
     </option>
@@ -875,29 +861,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="145" column="84" lean-forward="false" selection-start-line="145" selection-start-column="84" selection-end-line="145" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customauth/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="232" column="42" lean-forward="false" selection-start-line="232" selection-start-column="42" selection-end-line="232" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,9 +880,27 @@
     <entry file="file://$PROJECT_DIR$/customauth/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
-          <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="126" column="67" lean-forward="false" selection-start-line="126" selection-start-column="67" selection-end-line="126" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="228" column="30" lean-forward="false" selection-start-line="228" selection-start-column="30" selection-end-line="228" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

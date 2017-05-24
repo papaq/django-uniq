@@ -226,6 +226,7 @@ def subscribe_university(request):
 
     results = []
 
+    print('form is valid ???%s' % form_search.is_valid())
     if form_search.is_valid():
         search_request = form_search.cleaned_data['search_request']
         results = university_search_helper(4, search_request)
@@ -256,10 +257,10 @@ def subscribe_faculty(request):
 
     results = []
 
+    print('form is valid ???' + form_search.is_valid())
     if form_search.is_valid():
         search_request = form_search.cleaned_data['search_request']
         results = university_search_helper(4, search_request)
-        print(results)
 
         if request.user.university is None:
             return redirect(reverse('customauth:subscribe_university'))

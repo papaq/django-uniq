@@ -125,7 +125,7 @@
                               method="" enctype="multipart/form-data">
 
                             {% for channel in user_info.channels %}
-                                {% if not channel.name == 'group' and not user_info.user_kind is 'Student' %}
+                                {% if not channel.name == 'group' or channel.name == 'group' and user_info.user_kind == 'Student' %}
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="id_{{ channel.name }}">
                                             {{ channel.name.title }}:

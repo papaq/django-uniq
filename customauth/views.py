@@ -69,7 +69,7 @@ def register_user(request):
                 login(request, user)
 
                 if not hasattr(request, 'redirect_field_name'):
-                    return redirect(reverse('customauth:login'))
+                    return redirect(reverse('customauth:profile'))
                 return redirect(request.redirect_field_name.next)
 
                 # else:

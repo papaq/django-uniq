@@ -2,9 +2,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 
-from channels.views import university_search_helper
+from channels import search_helper
+from channels.models import University, Faculty, Group
 from customauth.admin import UserCreationForm
-from customauth.forms import UserLoginForm, UserProfileForm, UserSubscriptionForm, UserChooseForm
+from customauth.forms import UserLoginForm, UserProfileForm, UserSubscriptionForm, UserChoiceForm
 
 
 def login_user(request):
@@ -91,7 +92,7 @@ def profile(request):
         new_avatar = form.cleaned_data['avatar']
         if (request.user.first_name != new_first_name
             or request.user.last_name != new_last_name
-            or new_avatar is not None):
+                or new_avatar is not None):
 
             request.user.first_name = new_first_name
             request.user.last_name = new_last_name
@@ -159,7 +160,7 @@ def profile(request):
 def avatar_delete(request, pk):
     if pk == request.user.pk.__str__():
         request.user.avatar.delete(save=True)
-        print(request.user.avatar)
+
     return redirect(reverse("customauth:profile"))
 
 
@@ -222,26 +223,31 @@ def subscription(request, channel):
 @login_required
 def subscribe_university(request):
     form_search = UserSubscriptionForm(request.POST or None)
-    form_choose = UserChooseForm(request.POST or None)
+    form_choose = None
 
     results = []
+    previous_value = ''
+    if request.user.university:
+        previous_value = request.user.university.title
 
-    print('form is valid ???%s' % form_search.is_valid())
     if form_search.is_valid():
         search_request = form_search.cleaned_data['search_request']
-        results = university_search_helper(4, search_request)
-        choice = {'choice': (('a', 'a'),)}
-        form_choose.__init__(kwargs=choice)
-        print(results)
+        previous_value = search_request
+        result_query = search_helper.university_search_helper(10, search_request)
+
+        for university in result_query:
+            results.insert(0, (university.pk, "%s (%s)" % (university.title, university.city)))
+
+        form_choose = UserChoiceForm(choices=results)
 
     warning = []
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
+        'previous_value': previous_value,
         'channel': 'university',
         'attention': warning,
-        'results': results,
     }
 
     return render(request, 'customauth/subscription.html', context)
@@ -253,28 +259,31 @@ def subscribe_faculty(request):
         return redirect(reverse('customauth:subscribe_university'))
 
     form_search = UserSubscriptionForm(request.POST or None)
-    form_choose = UserChooseForm(request.POST or None)
+    form_choose = None
 
     results = []
+    previous_value = ''
+    if request.user.faculty:
+        previous_value = request.user.faculty.title
 
-    print('form is valid ???' + form_search.is_valid())
     if form_search.is_valid():
         search_request = form_search.cleaned_data['search_request']
-        results = university_search_helper(4, search_request)
+        previous_value = search_request
+        result_query = search_helper.faculty_search_helper(10, search_request, request.user.university.pk)
 
-        if request.user.university is None:
-            return redirect(reverse('customauth:subscribe_university'))
+        for faculty in result_query:
+            results.insert(0, (faculty.pk, faculty.title))
 
-        # save changes
+        form_choose = UserChoiceForm(choices=results)
 
     warning = []
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
+        'previous_value': previous_value,
         'channel': 'faculty',
         'attention': warning,
-        'results': results,
     }
 
     return render(request, 'customauth/subscription.html', context)
@@ -288,28 +297,75 @@ def subscribe_group(request):
         return redirect(reverse('customauth:subscribe_faculty'))
 
     form_search = UserSubscriptionForm(request.POST or None)
-    form_choose = UserChooseForm(request.POST or None)
+    form_choose = None
 
     results = []
+    previous_value = ''
+    if request.user.group:
+        previous_value = request.user.group.title
 
     if form_search.is_valid():
         search_request = form_search.cleaned_data['search_request']
-        results = university_search_helper(4, search_request)
-        print(results)
+        previous_value = search_request
+        result_query = search_helper.group_search_helper(10, search_request, request.user.faculty.pk)
 
-        if request.user.faculty is None:
-            return redirect(reverse('customauth:subscribe_faculty'))
+        for group in result_query:
+            results.insert(0, (group.pk, "%s (%s)" % (group.title, group.group_stack.show_title)))
 
-        # save changes
+        form_choose = UserChoiceForm(choices=results)
 
     warning = []
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
+        'previous_value': previous_value,
         'channel': 'group',
         'attention': warning,
-        'results': results,
     }
 
     return render(request, 'customauth/subscription.html', context)
+
+
+@login_required
+def save_subscription(request, channel_level=None):
+    channel_pk = int(request.POST.get('choice', ''))
+
+    if not channel_level or not channel_pk:
+        return redirect(reverse('customauth:profile'))
+
+    if channel_level == 'university':
+        request.user.faculty = request.user.group = None
+        uni = University.objects_safe.safe_get(pk=channel_pk)
+        if uni:
+            request.user.university = uni
+            request.user.save()
+
+    elif channel_level == 'faculty':
+        request.user.group = None
+        uni = request.user.university
+
+        # Check if university record exists
+        if not uni:
+            return redirect(reverse('customauth:profile'))
+
+        faculty = Faculty.objects_safe.safe_get(pk=channel_pk)
+        if faculty:
+            request.user.faculty = faculty
+            request.user.save()
+
+    elif channel_level == 'group':
+        # Check if university record exists
+        if not request.user.university:
+            return redirect(reverse('customauth:profile'))
+
+        # Check if faculty record exists
+        if not request.user.faculty:
+            return redirect(reverse('customauth:profile'))
+
+        group = Group.objects_safe.safe_get(pk=channel_pk)
+        if group:
+            request.user.group = group
+            request.user.save()
+
+    return redirect(reverse('customauth:profile'))

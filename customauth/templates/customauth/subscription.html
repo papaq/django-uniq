@@ -36,7 +36,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="{{ form_search.search_request.name }}"
                                            id="id_{{ channel }}" placeholder="Search for {{ channel }}"
-                                    value="{% if form_search.request.value %}{{ form_search.request.value }}{% endif %}">
+                                    value="{{ previous_value }}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="submit">Search!</button>
                                     </span>
@@ -45,17 +45,22 @@
                         </div><!-- /.row -->
                     </form>
 
-                    <form class="form-horizontal" role="form" action=""
+                    <form class="form-horizontal" role="form" action="{% url 'customauth:save_subscription' channel %}"
                           method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% if form_search.search_request.value %}
                             <br>
                             <div class="form-horizontal">
-                                <label for="select" class="col-lg-2 control-label">Now choose:</label>
+                                <label for="id_choice" class="col-lg-2 control-label">Now choose:</label>
                                 <div class="col-lg-9">
-                                    <select class="form-control" id="select">
-                                        {% for x,y in form_choose.fields.channel.choices %}
-                                            <option value="{{ x }}"{% if form_choose.fields.choice.value == x %} selected{% endif %}>{{ y }}</option>
+                                    <select class="form-control" id="id_choice" name="choice">
+                                        {% for x,y in form_choose.fields.choice.choices %}
+                                            <option value="{{ x }}"
+                                                    {% if form_choose.fields.choice.value == x %}
+                                                        selected
+                                                    {% endif %}>
+                                                {{ y }}
+                                            </option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -67,8 +72,8 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-9">
-                                {% if form_search.search_request.value and form_choose.fields.channel.choices %}
-                                    <a href="{% url 'customauth:profile'%}" class="btn btn-success" type="submit">Save changes</a>
+                                {% if form_search.search_request.value and form_choose.fields.choice.choices %}
+                                    <button class="btn btn-success" type="submit">Save changes</button>
                                 {% endif %}
                                 <a href="{% url 'customauth:profile'%}" class="btn btn-default" role="button">Cancel</a>
                             </div>

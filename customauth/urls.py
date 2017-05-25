@@ -9,6 +9,7 @@ subscription_url_patterns = [
     url(r'^faculty/$', views.subscribe_faculty, name='subscribe_faculty'),
     url(r'^group/$', views.subscribe_group, name='subscribe_group'),
     url(r'^(?P<channel>\w+)/$', views.subscription, name='subscription'),
+    url(r'^save/(?P<channel_level>\w+)/$', views.save_subscription, name='save_subscription')
 ]
 
 unsubscription_url_patterns = [

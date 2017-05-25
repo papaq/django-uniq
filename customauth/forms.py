@@ -26,12 +26,10 @@ class UserSubscriptionForm(forms.Form):
     search_request = forms.CharField(max_length=255, required=True)
 
 
-class UserChooseForm(forms.Form):
-    choice = forms.CharField(max_length=1, required=False)
+class UserChoiceForm(forms.Form,):
+    choice = forms.ChoiceField(required=False)
 
     def __init__(self, *args, **kwargs):
-        super(UserChooseForm, self).__init__(*args, **kwargs)
-        choice = kwargs.get('choice')
-        print(choice)
-        self.base_fields.__setattr__('choice', choice)
-        print(self.base_fields.get('choice'))
+        choices = kwargs.pop('choices', [])
+        super(UserChoiceForm, self).__init__(*args, **kwargs)
+        self.fields['choice'].choices = choices

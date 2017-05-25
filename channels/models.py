@@ -47,6 +47,8 @@ def year_choices():
 
 class University(models.Model):
     title = models.CharField(max_length=200, unique=True)
+    short_titles = models.CharField(max_length=100, null=False, default='',
+                                    help_text='Input short names, dividing by coma')
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
 

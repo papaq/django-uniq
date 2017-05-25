@@ -136,17 +136,19 @@
                                                    placeholder="{{ channel.name.title }} is not specified yet" disabled=""
                                                    value="{% if channel.content %}{{ channel.content.title }}{% endif %}">
                                         </div>
-                                        <div class="col-lg-1">
-                                            <a href="{% url 'customauth:unsubscription' channel.name %}"
-                                               class="btn btn-danger" role="button">
-                                                <span class="glyphicon glyphicon-remove"></span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="{% url 'customauth:subscription' channel.name %}"
-                                               class="btn btn-success" role="button">
-                                                Change
-                                            </a>
+                                        <div class="col-sm-3">
+                                            <div class="col-sm-4">
+                                                <a href="{% url 'customauth:unsubscription' channel.name %}"
+                                                   class="btn btn-danger" role="button">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <a href="{% url 'customauth:subscription' channel.name %}"
+                                                   class="btn btn-success" role="button">
+                                                    Change
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 {% endif %}

@@ -5,6 +5,7 @@ from channels.models import University, Faculty, Group
 
 def university_search_helper(count, query):
     result_list = University.objects.filter(title__icontains=query)
+    result_list += University.objects.filter(short_titles__icontains=query)
     return result_list[:count]
 
 

@@ -225,7 +225,9 @@ def subscribe_university(request):
     form_search = UserSubscriptionForm(request.POST or None)
     form_choose = None
 
+    channel = 'university'
     results = []
+    warnings = []
     previous_value = ''
     if request.user.university:
         previous_value = request.user.university.title
@@ -238,16 +240,18 @@ def subscribe_university(request):
         for university in result_query:
             results.insert(0, (university.pk, "%s (%s)" % (university.title, university.city)))
 
-        form_choose = UserChoiceForm(choices=results)
-
-    warning = []
+        if results:
+            form_choose = UserChoiceForm(choices=results)
+        else:
+            warnings += ["We still don't serve your %s, call 911!" % channel]
+            form_choose = None
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
         'previous_value': previous_value,
-        'channel': 'university',
-        'attention': warning,
+        'channel': channel,
+        'warnings': warnings,
     }
 
     return render(request, 'customauth/subscription.html', context)
@@ -261,6 +265,8 @@ def subscribe_faculty(request):
     form_search = UserSubscriptionForm(request.POST or None)
     form_choose = None
 
+    channel = 'faculty'
+    warnings = []
     results = []
     previous_value = ''
     if request.user.faculty:
@@ -274,16 +280,18 @@ def subscribe_faculty(request):
         for faculty in result_query:
             results.insert(0, (faculty.pk, faculty.title))
 
-        form_choose = UserChoiceForm(choices=results)
-
-    warning = []
+        if results:
+            form_choose = UserChoiceForm(choices=results)
+        else:
+            warnings += ["We still don't serve your %s, call 911!" % channel]
+            form_choose = None
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
         'previous_value': previous_value,
-        'channel': 'faculty',
-        'attention': warning,
+        'channel': channel,
+        'wornings': warnings,
     }
 
     return render(request, 'customauth/subscription.html', context)
@@ -299,7 +307,9 @@ def subscribe_group(request):
     form_search = UserSubscriptionForm(request.POST or None)
     form_choose = None
 
+    channel = 'group'
     results = []
+    warnings = []
     previous_value = ''
     if request.user.group:
         previous_value = request.user.group.title
@@ -312,16 +322,18 @@ def subscribe_group(request):
         for group in result_query:
             results.insert(0, (group.pk, "%s (%s)" % (group.title, group.group_stack.show_title)))
 
-        form_choose = UserChoiceForm(choices=results)
-
-    warning = []
+        if results:
+            form_choose = UserChoiceForm(choices=results)
+        else:
+            warnings += ["We still don't serve your %s, call 911!" % channel]
+            form_choose = None
 
     context = {
         'form_search': form_search,
         'form_choose': form_choose,
         'previous_value': previous_value,
-        'channel': 'group',
-        'attention': warning,
+        'channel': channel,
+        'wornings': warnings,
     }
 
     return render(request, 'customauth/subscription.html', context)

@@ -6,13 +6,13 @@
 
 <div class="container">
 
-    {% if errors %}
+    {% for w in warnings %}
     <div class="alert alert-dismissible alert-warning">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <h4>Attention!</h4>
-      <p>{{ errors.sender }}</p>
+      <h4>Oh snap! {{ w }}</h4>
+      <p></p>
     </div>
-    {% endif %}
+    {% endfor %}
 
     <div class="row">
         <div class="col-sm-offset-0 col-sm-12 col-lg-offset-2 col-lg-8">
@@ -49,23 +49,25 @@
                           method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% if form_search.search_request.value %}
-                            <br>
-                            <div class="form-horizontal">
-                                <label for="id_choice" class="col-lg-2 control-label">Now choose:</label>
-                                <div class="col-lg-9">
-                                    <select class="form-control" id="id_choice" name="choice">
-                                        {% for x,y in form_choose.fields.choice.choices %}
-                                            <option value="{{ x }}"
-                                                    {% if form_choose.fields.choice.value == x %}
-                                                        selected
-                                                    {% endif %}>
-                                                {{ y }}
-                                            </option>
-                                        {% endfor %}
-                                    </select>
+                            {% if form_choose %}
+                                <br>
+                                <div class="form-horizontal">
+                                    <label for="id_choice" class="col-lg-2 control-label">Now choose:</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" id="id_choice" name="choice">
+                                            {% for x,y in form_choose.fields.choice.choices %}
+                                                <option value="{{ x }}"
+                                                        {% if form_choose.fields.choice.value == x %}
+                                                            selected
+                                                        {% endif %}>
+                                                    {{ y }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
+                                <br>
+                            {% endif %}
                         {% endif %}
 
                         <br>

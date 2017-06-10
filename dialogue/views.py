@@ -39,7 +39,7 @@ def dialogue_chat(request, dialogue_pk):
             second_participant = participant
 
     context = {
-        'participant': second_participant,
+        'second_participant': second_participant,
         'messages': messages,
         'form': form,
 

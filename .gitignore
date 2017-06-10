@@ -8,5 +8,4 @@ uniqvenv
 db.sqlite3
 /static
 .DS_Store
-*/migrations/
 media/users/

@@ -24,8 +24,6 @@ def dialogue_chat(request, dialogue_pk):
     dialogue = get_object_or_404(Dialogue, pk=dialogue_pk)
     form = MessageForm(request.POST or None)
 
-    print(form.is_valid())
-
     if form.is_valid():
         text = form.cleaned_data['message']
         message = Message(sender=request.user, text=text, dialogue=dialogue)
@@ -35,8 +33,10 @@ def dialogue_chat(request, dialogue_pk):
     second_participant = None
 
     for participant in dialogue.participants.all():
-        if participant is not request.user:
+        if participant.pk is not request.user.pk:
             second_participant = participant
+
+    print(second_participant)
 
     context = {
         'second_participant': second_participant,

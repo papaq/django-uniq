@@ -1,5 +1,5 @@
 {% extends 'channels/base.html' %}
-{% block title %}Dialogues{% endblock %}
+{% block title %}{{ second_participant.first_name }}{% endblock %}
 
 {% block content %}
     <div class="" style="bottom: 0; position: absolute; ">
@@ -12,6 +12,7 @@
                 {% for message in messages %}
 
                     {% if message.sender.pk is second_participant.pk %}
+                        {{ second_participant.first_name }}
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-2">

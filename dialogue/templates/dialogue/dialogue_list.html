@@ -9,18 +9,33 @@
 
             {% for dialogue in dialogues %}
                 <a href="{% url 'dialogue:dialogue_chat' dialogue.pk %}" class="list-group-item">
-                    <h4 class="list-group-item-heading">
+                    <div class="row">
+                        <div class="col-sm-2">
 
-                        {% for participant in dialogue.participants.all %}
-                            {% if this_user.pk != participant.pk %}
-                                {{ participant.first_name }}&nbsp;{{ participant.last_name }}
-                            {% endif %}
-                        {% endfor %}
+                            {% load static %}
+                            <img class="img-responsive img-circle" src="
+                                        {% if message.sender.avatar %}
+                                            {{ message.sender.avatar.url }}
+                                        {% else %}
+                                            {% get_media_prefix %}img/noavatar.png
+                                        {% endif %}
+                                    " alt="...">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="list-group-item-heading">
 
-                    </h4>
-                    <p class="list-group-item-text">
-                        Newest message: {{ dialogue.fresh_message_date }}
-                    </p>
+                                {% for participant in dialogue.participants.all %}
+                                    {% if this_user.pk != participant.pk %}
+                                        {{ participant.first_name }}&nbsp;{{ participant.last_name }}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </h4>
+                            <p class="list-group-item-text">
+                                Newest message: {{ dialogue.fresh_message_date }}
+                            </p>
+                        </div>
+                    </div>
                 </a>
             {% endfor %}
 

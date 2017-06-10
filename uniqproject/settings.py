@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels.apps.ChannelsConfig',
     'post.apps.PostConfig',
     'customauth.apps.CustomauthConfig',
+    'dialogue.apps.DialogueConfig'
 ]
 
 MIDDLEWARE = [

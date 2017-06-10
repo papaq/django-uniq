@@ -333,7 +333,7 @@ def subscribe_group(request):
         'form_choose': form_choose,
         'previous_value': previous_value,
         'channel': channel,
-        'wornings': warnings,
+        'warnings': warnings,
     }
 
     return render(request, 'customauth/subscription.html', context)

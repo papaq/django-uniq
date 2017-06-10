@@ -39,5 +39,3 @@ admin.site.register(University, UniversityModelAdmin)
 admin.site.register(Faculty, FacultyModelAdmin)
 admin.site.register(GroupStack, GroupStackModelAdmin)
 admin.site.register(Group, GroupModelAdmin)
-
-

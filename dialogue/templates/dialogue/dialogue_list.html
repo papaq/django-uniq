@@ -1,0 +1,31 @@
+{% extends 'channels/base.html' %}
+{% block title %}Dialogues{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-sm-8">
+        <div class="list-group">
+
+            {% for dialogue in dialogues %}
+                <a href="{% url 'dialogue:dialogue_chat' dialogue.pk %}" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+
+                        {% for participant in dialogue.participants.all %}
+                            {% if this_user.pk != participant.pk %}
+                                {{ participant.first_name }}&nbsp;{{ participant.last_name }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </h4>
+                    <p class="list-group-item-text">
+                        Newest message: {{ dialogue.fresh_message_date }}
+                    </p>
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

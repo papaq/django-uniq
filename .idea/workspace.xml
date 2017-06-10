@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdd7b563-a645-43ea-9310-07cdae893d57" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channels/static/channels/js/basic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dialogue/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dialogue/urls.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0002_auto_20170522_0302.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0003_auto_20170523_1213.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0004_auto_20170524_1716.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0005_auto_20170524_1732.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0006_auto_20170524_2057.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0007_auto_20170525_1544.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0008_auto_20170525_1545.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0009_auto_20170525_1546.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0010_groupstack_show_title.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0011_auto_20170525_1816.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0012_auto_20170525_1937.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0013_university_short_titles.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0014_auto_20170525_2043.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0002_auto_20170522_0339.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0003_auto_20170522_0343.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0004_auto_20170522_1054.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0005_auto_20170522_1100.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0006_auto_20170523_1213.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/admin.py" afterPath="$PROJECT_DIR$/channels/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/templates/channels/base.html" afterPath="$PROJECT_DIR$/channels/templates/channels/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/templates/customauth/profile.html" afterPath="$PROJECT_DIR$/customauth/templates/customauth/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/views.py" afterPath="$PROJECT_DIR$/customauth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/settings.py" afterPath="$PROJECT_DIR$/uniqproject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/urls.py" afterPath="$PROJECT_DIR$/uniqproject/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,68 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/customauth/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dialogue/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dialogue_chat.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="19" column="69" lean-forward="false" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#1473#1479#0#HTML" expanded="true" />
-                <element signature="e#2236#2242#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/channels/static/channels/js/basic.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dialogue/forms.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="60" lean-forward="false" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+              <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -214,7 +126,6 @@
         <option value="$PROJECT_DIR$/channels/views.py" />
         <option value="$PROJECT_DIR$/customauth/forms.py" />
         <option value="$PROJECT_DIR$/channels/models.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/channels/search_helper.py" />
         <option value="$PROJECT_DIR$/customauth/templates/customauth/subscription.html" />
         <option value="$PROJECT_DIR$/dialog/urls.py" />
@@ -233,6 +144,7 @@
         <option value="$PROJECT_DIR$/dialogue/views.py" />
         <option value="$PROJECT_DIR$/dialogue/forms.py" />
         <option value="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -815,13 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/subscription.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -975,62 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dialogue/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customauth/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="85" column="71" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/static/channels/js/basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dialogue/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dialogue/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="60" lean-forward="false" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1045,6 +898,66 @@
             <element signature="e#1473#1479#0#HTML" expanded="true" />
             <element signature="e#2236#2242#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dialogue/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/static/channels/js/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dialogue/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="60" lean-forward="false" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dialogue/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

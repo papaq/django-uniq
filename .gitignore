@@ -1,5 +1,8 @@
 *.pyc
 *~
+*.gif
+*.jpg
+*.jpeg
 __pycache__
 uniqvenv
 db.sqlite3

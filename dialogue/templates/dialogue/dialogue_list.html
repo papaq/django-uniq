@@ -14,8 +14,10 @@
 
                             {% load static %}
                             <img class="img-responsive img-circle" src="
-                                        {% if message.sender.avatar %}
-                                            {{ message.sender.avatar.url }}
+                                        {% if dialogue.participants.all.0.avatar and dialogue.participants.all.0.pk is not this_user.pk %}
+                                            {{ dialogue.participants.all.0.avatar.url }}
+                                        {% elif dialogue.participants.all.1.avatar and dialogue.participants.all.1.pk is not this_user.pk %}
+                                            {{ dialogue.participants.all.1.avatar.url }}
                                         {% else %}
                                             {% get_media_prefix %}img/noavatar.png
                                         {% endif %}

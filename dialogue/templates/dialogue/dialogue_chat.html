@@ -1,71 +1,82 @@
 {% extends 'channels/base.html' %}
-{% block title %}{{ second_participant.first_name }}{% endblock %}
+
+{% block title %}
+    {{ second_participant.first_name }}
+{% endblock %}
+
+{% block javascript %}
+    {% load static %}
+    <script src="{% static 'dialogue/js/basic.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="" style="bottom: 0; position: absolute; ">
         <div class="container col-sm-offset-0 col-sm-12 col-lg-offset-2 col-lg-8" >
 
-            <div style="height: 80vh; overflow-y:scroll; " id="chat_scroll">
+            <div>
 
                 {% load static %}
 
-                {% for message in messages %}
+                <div style="height: 80vh; overflow-y:scroll; " id="messages_list">
+                    {% for message in messages %}
 
-                    {% if message.sender.pk is second_participant.pk %}
-                        <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <img class="img-responsive img-circle" src="
-                                                {% if message.sender.avatar %}
-                                                    {{ message.sender.avatar.url }}
-                                                {% else %}
-                                                    {% get_media_prefix %}img/noavatar.png
-                                                {% endif %}
-                                            " alt="...">
-                                </div>
-                                <div class="well col-sm-9">
-                                    <p>{{ message.text }}</p>
-                                    <hr>
-                                    <div class="col-sm-5 col-sm-offset-0">
-                                        {{ message.sender.first_name }}&nbsp;
+                        {% if message.sender.pk is second_participant.pk %}
+                            <div class="col-sm-9 message-block">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img class="img-responsive img-circle" src="
+                                                    {% if message.sender.avatar %}
+                                                        {{ message.sender.avatar.url }}
+                                                    {% else %}
+                                                        {% get_media_prefix %}img/noavatar.png
+                                                    {% endif %}
+                                                " alt="...">
                                     </div>
-                                    <div class="pull-right">
-                                        {{ message.date }}
+                                    <div class="well col-sm-9">
+                                        <p>{{ message.text }}</p>
+                                        <hr>
+                                        <div class="col-sm-5 col-sm-offset-0">
+                                            {{ message.sender.first_name }}&nbsp;
+                                        </div>
+                                        <div class="pull-right">
+                                            {{ message.date }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    {% else %}
-                        <div class="col-sm-9 pull-right">
-                            <div class="row">
-                                <div class="well col-sm-9">
-                                    <p>{{ message.text }}</p>
-                                    <hr>
-                                    <div class="col-sm-5 col-sm-offset-0">
-                                        {{ message.sender.first_name }}&nbsp;
+                        {% else %}
+                            <div class="col-sm-9 pull-right">
+                                <div class="row">
+                                    <div class="well col-sm-9">
+                                        <p>{{ message.text }}</p>
+                                        <hr>
+                                        <div class="col-sm-5 col-sm-offset-0">
+                                            {{ message.sender.first_name }}&nbsp;
+                                        </div>
+                                        <div class="pull-right">
+                                            {{ message.date }}
+                                        </div>
                                     </div>
-                                    <div class="pull-right">
-                                        {{ message.date }}
+                                    <div class="col-sm-2">
+                                        <img class="img-responsive img-circle" src="
+                                                    {% if message.sender.avatar %}
+                                                        {{ message.sender.avatar.url }}
+                                                    {% else %}
+                                                        {% get_media_prefix %}img/noavatar.png
+                                                    {% endif %}
+                                                " alt="...">
                                     </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <img class="img-responsive img-circle" src="
-                                                {% if message.sender.avatar %}
-                                                    {{ message.sender.avatar.url }}
-                                                {% else %}
-                                                    {% get_media_prefix %}img/noavatar.png
-                                                {% endif %}
-                                            " alt="...">
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
 
 
                 <script type="text/javascript">
-                   scrollDown('chat_scroll');
+                   scrollDown('messages_list');
+                   updateMessages();
                 </script>
 
             </div>
@@ -78,8 +89,9 @@
                         <div class="input-group">
 
                             <div class="">
-                                <input class='form-control' id="{{ field.auto_id }}" maxlength="2000"
-                                       type="text" placeholder="{{ field.label }}" name="{{ field.name }}">
+                                <input class='form-control' id="{{ field.auto_id }}" maxlength="2000" type="text"
+                                       placeholder="{{ field.label }} to {{ second_participant.first_name }}"
+                                       name="{{ field.name }}">
                             </div>
 
                             <span class="input-group-btn">

@@ -1,0 +1,54 @@
+{% load static %}
+{% for message in messages %}
+
+    {% if message.sender.pk is second_participant.pk %}
+        <div class="col-sm-9 message-block">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-responsive img-circle" src="
+                                {% if message.sender.avatar %}
+                                    {{ message.sender.avatar.url }}
+                                {% else %}
+                                    {% get_media_prefix %}img/noavatar.png
+                                {% endif %}
+                            " alt="...">
+                </div>
+                <div class="well col-sm-9">
+                    <p>{{ message.text }}</p>
+                    <hr>
+                    <div class="col-sm-5 col-sm-offset-0">
+                        {{ message.sender.first_name }}&nbsp;
+                    </div>
+                    <div class="pull-right">
+                        {{ message.date }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="col-sm-9 message_block pull-right">
+            <div class="row">
+                <div class="well col-sm-9">
+                    <p>{{ message.text }}</p>
+                    <hr>
+                    <div class="col-sm-5 col-sm-offset-0">
+                        {{ message.sender.first_name }}&nbsp;
+                    </div>
+                    <div class="pull-right">
+                        {{ message.date }}
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive img-circle" src="
+                                {% if message.sender.avatar %}
+                                    {{ message.sender.avatar.url }}
+                                {% else %}
+                                    {% get_media_prefix %}img/noavatar.png
+                                {% endif %}
+                            " alt="...">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

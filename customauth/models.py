@@ -90,7 +90,8 @@ class UniqUser(AbstractBaseUser, PermissionsMixin):
         width_field="width_field",
         height_field="height_field",
         null=True,
-        blank=True,)
+        blank=True,
+    )
 
     width_field = models.IntegerField(default=128, null=True, blank=True)
     height_field = models.IntegerField(default=128, null=True, blank=True)

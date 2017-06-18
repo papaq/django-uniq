@@ -1,0 +1,44 @@
+{% extends 'channels/base.html' %}
+{% block activeStream %}active{% endblock %}
+
+{% block content %}
+
+    <div class="channels-list">
+        <div class="col-sm-4">
+            <div class="bs-component">
+                <div class="list-group">
+                    <a class="list-group-item {% if active == 'stream' %}active{% endif %}" href="{% url 'channels:stream' %}">
+                        <span class="badge">{{ new_posts }}</span>
+                        All together
+                    </a>
+                    {% for channel in channels.items %}
+                        {% if channel.1.item.title is not None %}
+                            <a class="list-group-item {% if active == channel %}active{% endif %}" href="#">
+                                <span class="badge">{{ channel.1.new_posts }}</span>
+                                {{ channel.1.item.title }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">
+                    &lt; &gt;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container stream col-sm-5">
+        <div class="posts">
+            {% block stream %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="container right-panel col-sm-3" style="">
+        <a href="#" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            &nbsp; Add new post
+        </a>
+    </div>
+
+{% endblock %}

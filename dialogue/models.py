@@ -13,8 +13,8 @@ class Dialogue(models.Model):
 
 
 class Message(models.Model):
-    dialogue = models.ForeignKey(Dialogue, related_name='dialogue', on_delete=models.CASCADE, null=False, blank=False)
-    sender = models.ForeignKey(UniqUser, related_name='user', on_delete=models.CASCADE, null=False, blank=False)
+    dialogue = models.ForeignKey(Dialogue, related_name='dialogues', on_delete=models.CASCADE, null=False, blank=False)
+    sender = models.ForeignKey(UniqUser, related_name='dialogues', on_delete=models.CASCADE, null=False, blank=False)
     text = models.CharField(max_length=1000, blank=False, null=False)
     date = models.DateTimeField(auto_now=True)
 

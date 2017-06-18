@@ -19,16 +19,16 @@ class FacultyModelAdmin(admin.ModelAdmin):
         model = Faculty
 
 
-class GroupStackModelAdmin(admin.ModelAdmin):
+class GroupSetModelAdmin(admin.ModelAdmin):
     list_display = ['title', 'get_university_title', 'get_faculty_title', 'year_enter', 'year_graduate']
     search_fields = ['title', 'year_enter', 'year_graduate']
 
     class Meta:
-        model = GroupStack
+        model = GroupSet
 
 
 class GroupModelAdmin(admin.ModelAdmin):
-    list_display = ['title', 'get_university_title', 'get_faculty_title', 'get_group_stack_title']
+    list_display = ['title', 'get_university_title', 'get_faculty_title', 'get_groupset_title']
     search_fields = ['title', ]
 
     class Meta:
@@ -37,5 +37,5 @@ class GroupModelAdmin(admin.ModelAdmin):
 
 admin.site.register(University, UniversityModelAdmin)
 admin.site.register(Faculty, FacultyModelAdmin)
-admin.site.register(GroupStack, GroupStackModelAdmin)
+admin.site.register(GroupSet, GroupSetModelAdmin)
 admin.site.register(Group, GroupModelAdmin)

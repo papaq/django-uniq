@@ -2,5 +2,5 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 
-def redirect_back(request):
-    return redirect(reverse('channels:index'))
+def redirect_to_stream(request):
+    return redirect(reverse('channels:stream'))

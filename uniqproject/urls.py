@@ -22,16 +22,18 @@ from channels import urls as channels_urls
 from customauth import urls as customauth_urls
 from post import urls as post_urls
 from dialogue import urls as dialogue_urls
+from . import views as base_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(channels_urls)),
+    url(r'^$', base_views.redirect_to_stream),
+    url(r'^channels/', include(channels_urls)),
 
     url(r'^post/', include(post_urls)),
     url(r'^account/', include(customauth_urls)),
     url(r'^dialogue/', include(dialogue_urls)),
 
-    #url(r'^.+$', base_views.redirect_back)
+    url(r'^.+$', base_views.redirect_to_stream)
 ]
 
 if settings.DEBUG:

@@ -22,7 +22,7 @@ def group_search_helper(count, query, faculty_pk):
     faculty = Faculty.objects_safe.safe_get(pk=faculty_pk)
     if not faculty:
         return []
-    model_list = Group.objects.filter(group_stack__faculty=faculty, title__icontains=query)
+    model_list = Group.objects.filter(group_set__faculty=faculty, title__icontains=query)
     return model_list[:count]
 
 

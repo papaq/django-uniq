@@ -20,11 +20,11 @@ class FacultyModelManager(models.Manager):
         return obj
 
 
-class GroupStackModelManager(models.Manager):
+class GroupSetModelManager(models.Manager):
     def safe_get(self, pk):
         try:
-            obj = GroupStack.objects.get(pk=pk)
-        except GroupStack.DoesNotExist:
+            obj = GroupSet.objects.get(pk=pk)
+        except GroupSet.DoesNotExist:
             obj = None
         return obj
 
@@ -79,17 +79,17 @@ class Faculty(models.Model):
         verbose_name_plural = "faculties"
 
 
-class GroupStack(models.Model):
+class GroupSet(models.Model):
     title = models.CharField(max_length=100)
     show_title = models.CharField(max_length=104, null=True, blank=True, editable=False)
 
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name="groupstacks")
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name="group_sets")
     info = models.TextField(blank=True, null=True)
     year_enter = models.IntegerField(choices=year_choices(), default=datetime.datetime.now().year, null=False)
     year_graduate = models.IntegerField(choices=year_choices(), default=datetime.datetime.now().year + 4, null=False)
 
     objects = models.Manager()
-    objects_safe = GroupStackModelManager()  # safe search
+    objects_safe = GroupSetModelManager()  # safe search
 
     def __str__(self):
         return self.title
@@ -102,12 +102,12 @@ class GroupStack(models.Model):
 
     def save(self, *args, **kwargs):
         self.show_title = "%s%s%d%s%d" % (self.title, ' ', self.year_enter, '-', self.year_graduate)
-        super(GroupStack, self).save(*args, **kwargs)
+        super(GroupSet, self).save(*args, **kwargs)
 
 
 class Group(models.Model):
     title = models.CharField(max_length=50)
-    group_stack = models.ForeignKey(GroupStack, on_delete=models.CASCADE, related_name='groups')
+    group_set = models.ForeignKey(GroupSet, on_delete=models.CASCADE, related_name='groups')
 
     objects = models.Manager()
     objects_safe = GroupModelManager()  # safe search
@@ -116,10 +116,10 @@ class Group(models.Model):
         return self.title
 
     def get_university_title(self):
-        return self.group_stack.faculty.university.title
+        return self.group_set.faculty.university.title
 
     def get_faculty_title(self):
-        return self.group_stack.faculty.title
+        return self.group_set.faculty.title
 
-    def get_group_stack_title(self):
-        return self.group_stack.title
+    def get_groupset_title(self):
+        return self.group_set.title

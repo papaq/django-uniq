@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 
 from dialogue.forms import MessageForm
@@ -60,8 +60,6 @@ def get_messages(request):
     messages_number = request.GET.get('messages_number', None)
     messages = Message.objects.filter(dialogue=dialogue_pk).order_by('-date')
     new_messages_number = messages.count()-int(messages_number)
-
-    print(new_messages_number)
 
     new_messages = messages[:new_messages_number]
     second_participant = None

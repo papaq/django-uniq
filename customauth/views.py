@@ -320,7 +320,7 @@ def subscribe_group(request):
         result_query = search_helper.group_search_helper(10, search_request, request.user.faculty.pk)
 
         for group in result_query:
-            results.insert(0, (group.pk, "%s (%s)" % (group.title, group.group_stack.show_title)))
+            results.insert(0, (group.pk, "%s (%s)" % (group.title, group.group_set.show_title)))
 
         if results:
             form_choose = UserChoiceForm(choices=results)

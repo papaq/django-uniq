@@ -13,10 +13,7 @@ def combine_sets(**model_sets):
     return combined_set
 
 
-def count_new_messages(messages_set, user):
-    new = 0
-    for message in messages_set:
-        if not message.read.all().filter(pk=user.pk):
-            new += 1
+def count_recent_posts(posts_set, user):
+    recent = len(posts_set.exclude(read=user))
 
-    return new
+    return recent

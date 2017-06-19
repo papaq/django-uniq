@@ -25,9 +25,15 @@ class Post(models.Model):
     starred = models.ManyToManyField(UniqUser, related_name='starred_posts')
     done = models.ManyToManyField(UniqUser, related_name='done_posts')
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, null=False, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(UniqUser, null=False, on_delete=models.CASCADE, related_name='comments')
     text = models.CharField(max_length=1000)
     date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return 'Comment on "%s"' % self.post.title

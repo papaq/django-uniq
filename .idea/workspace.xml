@@ -2,34 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdd7b563-a645-43ea-9310-07cdae893d57" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channels/templates/channels/channels_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channels/utils.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/channels/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/customauth/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dialogue/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dialogue/migrations/0002_auto_20170609_2053.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dialogue/migrations/0003_auto_20170609_2055.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dialogue/migrations/0004_auto_20170609_2055.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dialogue/migrations/0005_auto_20170610_1402.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/post/migrations/0001_initial.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channels/templates/channels/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/admin.py" afterPath="$PROJECT_DIR$/channels/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/models.py" afterPath="$PROJECT_DIR$/channels/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/search_helper.py" afterPath="$PROJECT_DIR$/channels/search_helper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/templates/channels/base.html" afterPath="$PROJECT_DIR$/channels/templates/channels/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/templates/channels/channels_stream.html" afterPath="$PROJECT_DIR$/channels/templates/channels/channels_stream.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/urls.py" afterPath="$PROJECT_DIR$/channels/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/utils.py" afterPath="$PROJECT_DIR$/channels/utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channels/views.py" afterPath="$PROJECT_DIR$/channels/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course/admin.py" afterPath="$PROJECT_DIR$/course/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course/models.py" afterPath="$PROJECT_DIR$/course/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/admin.py" afterPath="$PROJECT_DIR$/customauth/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/models.py" afterPath="$PROJECT_DIR$/customauth/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customauth/views.py" afterPath="$PROJECT_DIR$/customauth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialogue/models.py" afterPath="$PROJECT_DIR$/dialogue/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" afterPath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_list.html" afterPath="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialogue/views.py" afterPath="$PROJECT_DIR$/dialogue/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/post/admin.py" afterPath="$PROJECT_DIR$/post/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/post/models.py" afterPath="$PROJECT_DIR$/post/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/settings.py" afterPath="$PROJECT_DIR$/uniqproject/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/urls.py" afterPath="$PROJECT_DIR$/uniqproject/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uniqproject/views.py" afterPath="$PROJECT_DIR$/uniqproject/views.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/channels/templates/channels/channels_list.html" afterPath="$PROJECT_DIR$/channels/templates/channels/channels_stream.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +35,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="8" />
+            <state relative-caret-position="578">
+              <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -56,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/channels/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-347">
-              <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+            <state relative-caret-position="17">
+              <caret line="128" column="83" lean-forward="false" selection-start-line="128" selection-start-column="83" selection-end-line="128" selection-end-column="83" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -68,14 +56,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/admin.py">
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/channels/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="84" lean-forward="false" selection-start-line="7" selection-start-column="84" selection-end-line="7" selection-end-column="84" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="265">
+              <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/channels/templates/channels/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,33 +79,18 @@
       <file leaf-file-name="channels_stream.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_stream.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="42" column="105" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="105" />
-              <folding>
-                <element signature="e#2345#2351#0#HTML" expanded="true" />
-                <element signature="e#3954#3960#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="157">
+              <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="channels_base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="channels_base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-              <folding>
-                <element signature="e#1546#1552#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="95" column="80" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="80" />
+            <state relative-caret-position="130">
+              <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -128,9 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>UserCreationForm</find>
-      <find>re</find>
-      <find>;</find>
       <find>reg</find>
       <find>regist</find>
       <find>print</find>
@@ -157,7 +135,10 @@
       <find>group</find>
       <find>we</find>
       <find>fee</find>
+      <find>media_dir</find>
       <find>channels</find>
+      <find>clean</find>
+      <find>_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/registration/urls.py" />
-        <option value="$PROJECT_DIR$/registration/forms.py" />
         <option value="$PROJECT_DIR$/registration/views.py" />
         <option value="$PROJECT_DIR$/customauth/templates/customauth/register.html" />
         <option value="$PROJECT_DIR$/uniqvenv/Lib/site-packages/django/urls/base.py" />
@@ -180,7 +159,6 @@
         <option value="$PROJECT_DIR$/ajax_search/urls.py" />
         <option value="$PROJECT_DIR$/ajax_search/views.py" />
         <option value="$PROJECT_DIR$/channels/static/channels/css/channels.css" />
-        <option value="$PROJECT_DIR$/customauth/admin.py" />
         <option value="$PROJECT_DIR$/customauth/urls.py" />
         <option value="$PROJECT_DIR$/customauth/forms.py" />
         <option value="$PROJECT_DIR$/customauth/templates/customauth/subscription.html" />
@@ -193,7 +171,6 @@
         <option value="$PROJECT_DIR$/dialogue/admin.py" />
         <option value="$PROJECT_DIR$/dialogue/urls.py" />
         <option value="$PROJECT_DIR$/dialogue/templates/dialogue/messages.html" />
-        <option value="$PROJECT_DIR$/customauth/models.py" />
         <option value="$PROJECT_DIR$/dialogue/static/dialogue/js/basic.js" />
         <option value="$PROJECT_DIR$/course/apps.py" />
         <option value="$PROJECT_DIR$/uniqproject/settings.py" />
@@ -201,22 +178,26 @@
         <option value="$PROJECT_DIR$/dialogue/models.py" />
         <option value="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_list.html" />
         <option value="$PROJECT_DIR$/dialogue/views.py" />
+        <option value="$PROJECT_DIR$/channels/search_helper.py" />
+        <option value="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" />
+        <option value="$PROJECT_DIR$/uniqproject/views.py" />
+        <option value="$PROJECT_DIR$/post/admin.py" />
+        <option value="$PROJECT_DIR$/channels/templates/channels/channels_base.html" />
+        <option value="$PROJECT_DIR$/post/models.py" />
+        <option value="$PROJECT_DIR$/channels/models.py" />
+        <option value="$PROJECT_DIR$/customauth/models.py" />
+        <option value="$PROJECT_DIR$/uniqproject/urls.py" />
+        <option value="$PROJECT_DIR$/customauth/admin.py" />
+        <option value="$PROJECT_DIR$/customauth/views.py" />
+        <option value="$PROJECT_DIR$/course/admin.py" />
         <option value="$PROJECT_DIR$/course/models.py" />
         <option value="$PROJECT_DIR$/channels/admin.py" />
-        <option value="$PROJECT_DIR$/channels/models.py" />
-        <option value="$PROJECT_DIR$/channels/search_helper.py" />
-        <option value="$PROJECT_DIR$/customauth/views.py" />
-        <option value="$PROJECT_DIR$/dialogue/templates/dialogue/dialogue_chat.html" />
-        <option value="$PROJECT_DIR$/channels/templates/channels/base.html" />
-        <option value="$PROJECT_DIR$/uniqproject/views.py" />
         <option value="$PROJECT_DIR$/channels/urls.py" />
-        <option value="$PROJECT_DIR$/uniqproject/urls.py" />
-        <option value="$PROJECT_DIR$/post/admin.py" />
-        <option value="$PROJECT_DIR$/post/models.py" />
-        <option value="$PROJECT_DIR$/channels/utils.py" />
-        <option value="$PROJECT_DIR$/channels/views.py" />
+        <option value="$PROJECT_DIR$/channels/templates/channels/base.html" />
         <option value="$PROJECT_DIR$/channels/templates/channels/channels_stream.html" />
-        <option value="$PROJECT_DIR$/channels/templates/channels/channels_base.html" />
+        <option value="$PROJECT_DIR$/channels/utils.py" />
+        <option value="$PROJECT_DIR$/channels/templates/channels/search.html" />
+        <option value="$PROJECT_DIR$/channels/views.py" />
       </list>
     </option>
   </component>
@@ -298,6 +279,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="dialogue" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -321,6 +316,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dialogue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customauth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customauth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="customauth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uniq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="course" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -650,16 +695,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/uniqvenv/Lib/site-packages/django_ajax_search-1.5.1-py3.6.egg/__init__.py" />
     <entry file="file://$PROJECT_DIR$/uniqvenv/Lib/site-packages/ajax_search/views.py" />
     <entry file="file://$PROJECT_DIR$/uniqvenv/Lib/site-packages/ajax_search/urls.py" />
-    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/channels/static/channels/css/channels.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -719,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/course/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/course/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -767,26 +797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/course/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/channels/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -807,34 +821,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/subscription.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="46" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-867">
           <caret line="93" column="46" lean-forward="false" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="94" column="71" lean-forward="false" selection-start-line="94" selection-start-column="71" selection-end-line="94" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="377" column="21" lean-forward="false" selection-start-line="377" selection-start-column="16" selection-end-line="377" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -852,16 +842,6 @@
         <state relative-caret-position="192">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customauth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#101#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -897,24 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uniqproject/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-          <folding>
-            <element signature="e#645#677#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="109" column="13" lean-forward="false" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dialogue/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -927,25 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/post/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="84" lean-forward="false" selection-start-line="7" selection-start-column="84" selection-end-line="7" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,17 +896,142 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="58" column="46" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="58" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-977">
+          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="15" selection-end-column="41" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uniqproject/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="35" column="6" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="49" column="58" lean-forward="false" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="131" column="46" lean-forward="false" selection-start-line="131" selection-start-column="46" selection-end-line="131" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="84" lean-forward="false" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/subscription.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="47" column="118" lean-forward="false" selection-start-line="47" selection-start-column="70" selection-end-line="47" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="275" column="42" lean-forward="false" selection-start-line="275" selection-start-column="37" selection-end-line="275" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customauth/templates/customauth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="49" column="25" lean-forward="false" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_stream.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/post/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="8" />
+        <state relative-caret-position="578">
+          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -972,47 +1040,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/channels/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="265">
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channels/templates/channels/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/channels/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-347">
-          <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+        <state relative-caret-position="17">
+          <caret line="128" column="83" lean-forward="false" selection-start-line="128" selection-start-column="83" selection-end-line="128" selection-end-column="83" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/templates/channels/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="95" column="80" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_stream.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="42" column="105" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="105" />
-          <folding>
-            <element signature="e#2345#2351#0#HTML" expanded="true" />
-            <element signature="e#3954#3960#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channels/templates/channels/channels_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding>
-            <element signature="e#1546#1552#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

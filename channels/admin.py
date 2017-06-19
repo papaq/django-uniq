@@ -35,7 +35,16 @@ class GroupModelAdmin(admin.ModelAdmin):
         model = Group
 
 
+class CourseChannelModelAdmin(admin.ModelAdmin):
+    list_display = ['title', ]
+    search_fields = ['title', ]
+
+    class Meta:
+        model = CourseChannel
+
+
 admin.site.register(University, UniversityModelAdmin)
 admin.site.register(Faculty, FacultyModelAdmin)
 admin.site.register(GroupSet, GroupSetModelAdmin)
 admin.site.register(Group, GroupModelAdmin)
+admin.site.register(CourseChannel, CourseChannelModelAdmin)

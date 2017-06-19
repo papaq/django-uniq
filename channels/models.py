@@ -123,3 +123,14 @@ class Group(models.Model):
 
     def get_groupset_title(self):
         return self.group_set.title
+
+
+class CourseChannel(models.Model):
+    title = models.CharField(max_length=200, null=False, blank=True)
+
+    from customauth.models import UniqUser
+    subscribed_users = models.ManyToManyField(UniqUser, related_name='courses_i_subscribe')
+    subscribed_groups = models.ManyToManyField(Group, related_name='courses_we_subscribe')
+
+    def __str__(self):
+        return self.title

@@ -23,7 +23,7 @@ class MyUserManager(BaseUserManager):
         user.last_name = user.last_name.title()
 
         if not user.media_dir:
-            user.media_dir = "user%s" % (randrange(11121111, 99989999))
+            user.media_dir = "users/user%s" % (randrange(11121111, 99989999))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -58,7 +58,7 @@ def upload_location(user, filename):
     extension = lst[-1]
     avatar_name = "avatar%s" % (randrange(111211, 999899))
 
-    return "users/%s/%s.%s" % (user.media_dir, avatar_name, extension)
+    return "%s/%s.%s" % (user.media_dir, avatar_name, extension)
 
 
 class UniqUser(AbstractBaseUser, PermissionsMixin):

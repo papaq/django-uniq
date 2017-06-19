@@ -10,7 +10,7 @@ from customauth.forms import UserLoginForm, UserProfileForm, UserSubscriptionFor
 
 def login_user(request):
     if request.user.is_authenticated():
-        return redirect(reverse("channels:index"))
+        return redirect(reverse("channels:stream"))
 
     form = UserLoginForm(request.POST or None)
 
@@ -24,7 +24,7 @@ def login_user(request):
                 login(request, user)
 
                 if not hasattr(request, 'next'):
-                    return redirect(reverse('channels:channels-list'))
+                    return redirect(reverse('channels:stream'))
                 return redirect(request.next)
 
         else:
@@ -44,7 +44,7 @@ def logout_user(request):
 
 def register_user(request):
     if request.user.is_authenticated():
-        return redirect(reverse("channels:index"))
+        return redirect(reverse("channels:stream"))
 
     form = UserCreationForm(request.POST or None)
 

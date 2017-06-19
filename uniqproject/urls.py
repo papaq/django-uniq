@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^account/', include(customauth_urls)),
     url(r'^dialogue/', include(dialogue_urls)),
 
-    url(r'^.+$', base_views.redirect_to_stream)
+    # url(r'^.+$', base_views.redirect_to_stream)
 ]
 
 if settings.DEBUG:

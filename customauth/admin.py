@@ -37,7 +37,7 @@ class UserCreationForm(forms.ModelForm):
         user.last_name = user.last_name.title()
 
         if not user.media_dir:
-            user.media_dir = "user%s" % (randrange(11121111, 99989999))
+            user.media_dir = "users/user%s" % (randrange(11121111, 99989999))
 
         if commit:
             user.save()
@@ -69,7 +69,7 @@ class UserChangeForm(forms.ModelForm):
         user.last_name = user.last_name.title()
 
         if not user.media_dir:
-            user.media_dir = "user%s" % (randrange(11121111, 99989999))
+            user.media_dir = "users/user%s" % (randrange(11121111, 99989999))
 
         if commit:
             user.save()

@@ -1,10 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 
 from channels.utils import combine_sets, count_recent_posts
+from customauth.models import UniqUser
+from dialogue.models import Dialogue
 from post.models import Post
 
 
@@ -13,6 +15,7 @@ def stream(request):
     user = request.user
 
     context = {
+        'user': user,
         'active': 'stream',
         'new_posts': 0,
         'channels': {
@@ -168,24 +171,59 @@ class SearchView(View, LoginRequiredMixin):
             subgroups_posts=subgroups_posts,
         )
 
-        if channel_posts:
-            channel_posts.order_by('date')
-
-        if subjects_posts:
-            subjects_posts.order_by('date')
-
-        context['sections']['channel_posts']['posts'] = channel_posts
-        context['sections']['subject_posts']['posts'] = subjects_posts
-
         count_channel_posts = 0
         if channel_posts:
+            channel_posts.order_by('date')
             count_channel_posts = len(channel_posts)
 
         count_subject_posts = 0
         if subjects_posts:
+            subjects_posts.order_by('date')
             count_subject_posts = len(subjects_posts)
 
+        context['sections']['channel_posts']['posts'] = channel_posts
+        context['sections']['subject_posts']['posts'] = subjects_posts
         context['count'] = count_channel_posts + count_subject_posts
 
-
         return render(request, template, context)
+
+
+class GoToDialogueView(View):
+    def post(self, request, *args, **kwargs):
+        second_user_pk = kwargs['user_pk']
+
+        if not second_user_pk:
+            return redirect(reverse('dialogue:dialogue_list'))
+
+        second_user = None
+        try:
+            second_user = UniqUser.objects.get(pk=second_user_pk)
+        except ValueError:
+            return redirect(reverse('dialogue:dialogue_list'))
+
+        this_user = request.user
+
+        dialogue = Dialogue.objects.filter(participants=this_user) # .filter(participants=second_user)
+        if dialogue:
+
+            dialogue = dialogue.filter(participants=second_user)
+            if dialogue:
+                dialogue = dialogue[0]
+                return redirect(reverse_lazy(
+                    'dialogue:dialogue_chat',
+                    kwargs={
+                        'dialogue_pk': dialogue.pk
+                    }
+                ))
+
+        # create dialogue
+        dialogue = Dialogue()
+        dialogue.save()
+        dialogue.participants.add(this_user, second_user)
+
+        return redirect(reverse_lazy(
+            'dialogue:dialogue_chat',
+            kwargs={
+                'dialogue_pk': dialogue.pk
+            }
+        ))

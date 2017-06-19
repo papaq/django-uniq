@@ -10,3 +10,7 @@ body {
 .btn .btn-default {
     margin: 10px;
 }
+
+.img-to-dialogue:hover {
+    cursor: pointer;
+}

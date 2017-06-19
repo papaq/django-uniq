@@ -11,17 +11,22 @@
                 <div class="row">
                     <div class="col-sm-2">
                         {% if post.author.user_kind is 'F' %}
-                            <img class="img-responsive img-circle" src="
-                                            {% get_media_prefix %}img/noavatar.png
-                                        " alt="...">
+                            <img class="img-responsive img-circle" src="{% get_media_prefix %}img/noavatar.png"
+                                 alt="...">
                         {% else %}
-                            <img class="img-responsive img-circle" src="
-                                            {% if post.sender.avatar %}
-                                                {{ post.sender.avatar.url }}
-                                            {% else %}
-                                                {% get_media_prefix %}img/noavatar.png
-                                            {% endif %}
-                                        " alt="...">
+                            {% if post.author != user %}
+                                <form action="{% url 'channels:go_to_dialogue' post.author.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="image"
+                                           class="img-responsive img-circle img-to-dialogue"
+                                         src="{% if post.author.avatar %}{{ post.author.avatar.url }}{% else %}{% get_media_prefix %}img/noavatar.png{% endif %}"
+                                         alt="...">
+                                </form>
+                            {% else %}
+                                <img class="img-responsive img-circle"
+                                         src="{% if post.author.avatar %}{{ post.author.avatar.url }}{% else %}{% get_media_prefix %}img/noavatar.png{% endif %}"
+                                         alt="...">
+                            {% endif %}
                         {% endif %}
                     </div>
                     <div class="col-sm-10">

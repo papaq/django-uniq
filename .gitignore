@@ -10,5 +10,6 @@ db.sqlite3
 .DS_Store
 media/users/
 */migrations/*_auto_*
+*/migrations/????_*
 */migrations/*_initial.py
 

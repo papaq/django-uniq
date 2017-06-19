@@ -1,6 +1,11 @@
 {% extends 'channels/base.html' %}
 {% block activeStream %}active{% endblock %}
 
+{% block javascript %}
+    {% load static %}
+    <script src="{% static 'channels/js/create_dialogue.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 
     <div class="channels-list">
